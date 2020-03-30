@@ -14,12 +14,12 @@ The backup is done as follows:
 * `backup.conf`: our backup configuration file
 ```
 cd obiba/src/main/python/
-mv backup.conf backup.conf.original
-ln -s  ../../../../backup.conf .
+mv backup.conf backup_example.conf
+ln -s  ../../../../backup_example.conf .
 ```
-* `run_backup.sh`: Script wrapping 'obiba-backup-tool' call to export PYTHONPATH to 'root' user
+* `run_backup_example.sh`: Script wrapping 'obiba-backup-tool' call to export PYTHONPATH to 'root' user
 ```
-56 14 * * * /home/user/obiba-backup-tool/run_backup.sh > /gpfs/backups/obiba/backup.log 2>&1
+56 14 * * * /home/user/obiba-backup-tool/run_backup_example.sh > /gpfs/backups/obiba/backup.log 2>&1
 ```
 
 ### Example of a config file:

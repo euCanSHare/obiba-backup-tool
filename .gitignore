@@ -1,8 +1,0 @@
-node_modules
-bower_components
-.idea/
-backup.conf
-run_backup.py
-/obiba/src/main/python/backup.conf
-/obiba/src/main/python/backup.py
-.gitignore
