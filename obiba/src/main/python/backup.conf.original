@@ -1,0 +1,29 @@
+keep:
+  days: 5
+  month: 2
+destination: /gpfs/backups/obiba
+rsyncs:
+  - folder:
+      path: /var/lib/mica2
+      excludes: [/work]
+  - folder:
+      path: /etc/mica2
+projects:
+  mica:
+    keep:
+      days: 1
+      month: 1
+    files: [/tmp/toto.txt, /tmp/b_test/toto.txt]
+    folders: 
+      - folder:
+          path: /tmp/backupstest/folder1
+          excludes: [exclude_folder,exclude_file.txt]
+      - folder:
+          path: /tmp/backupstest/folder2
+    databases:
+      prefix: 'live%'
+      usr: zorro
+      pwd: '1234'
+rsync:
+  destination: /tmp/test
+  pem: /home/patae/.ssh/obiba-backup.pem

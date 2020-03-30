@@ -10,6 +10,18 @@ The backup is done as follows:
   * specified mongo DBs in the backup config
   * the backup days and months can be customized per project
 
+### Notes: OUR CUSTOMISATIONS
+* `backup.conf`: our backup configuration file
+```
+cd obiba/src/main/python/
+mv backup.conf backup.conf.original
+ln -s  ../../../../backup.conf .
+```
+* `run_backup.sh`: Script wrapping 'obiba-backup-tool' call to export PYTHONPATH to 'root' user
+```
+56 14 * * * /home/user/obiba-backup-tool/run_backup.sh > /gpfs/backups/obiba/backup.log 2>&1
+```
+
 ### Example of a config file:
 
 	keep:

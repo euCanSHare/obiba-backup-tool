@@ -169,11 +169,11 @@ class ObibaBackup:
             excludes = []
             if 'folder' in folder_item:
                 #Using hierarchical folder structure 
-                if 'path' in folder_item['folder']:
-                    folder_path = folder_item['folder']['path']
+                if 'path' in folder_item:
+                    folder_path = folder_item['path']
                     
-                    if 'excludes' in folder_item['folder']:
-                        for exclude in folder_item['folder']['excludes']:
+                    if 'excludes' in folder_item:
+                        for exclude in folder_item['excludes']:
                             if not (os.path.exists(exclude) or os.path.exists(os.path.join(folder_path,exclude))):
                                 print "\tExclude path %s not found, check the config entry is correct" % exclude 
                             excludes.append('--exclude=%s' % exclude)
@@ -189,7 +189,10 @@ class ObibaBackup:
               os.makedirs(destinationPath)
             backupFile = os.path.join(destinationPath, filename)
             #print ' '.join(str(x) for x in ["tar", "czfP", backupFile, folder_path] + excludes)
-            result = call(["tar", "czfP", backupFile, folder_path] + excludes) 
+            #result = call(["tar", "czfP", backupFile, folder_path] + excludes) # ORIGINAL
+            result = call(["tar", "czfP", backupFile] + excludes + [folder_path])
+
+
             if result != 0:
                 print "Failed to tar %s" % backupFile
                         
